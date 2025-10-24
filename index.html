@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANUS Voice Pro - AI Receptionist & Appointment Setter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'pulse': 'pulse 2s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        .speaking {
+            animation: pulse 1s infinite;
+            border-color: #10b981 !important;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <!-- Hero Section -->
+    <section class="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-blue-800 text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 py-20">
+            <div class="max-w-6xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Stop Missing Calls.
+                    <span class="block text-yellow-300">Start Growing Your Business.</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
+                    MANUS Voice Pro is the complete AI communication solution: answers every call, texts missed prospects, 
+                    handles after-hours inquiries, and books appointments 24/7. Never lose another customer again.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-4 text-lg rounded-lg transition-colors">
+                        Schedule Consultation
+                    </button>
+                    <button class="border-2 border-white text-white hover:bg-white hover:text-blue-800 font-semibold px-8 py-4 text-lg rounded-lg transition-colors">
+                        Watch Demo
+                    </button>
+                </div>
+                <div class="mt-8 text-sm text-blue-200">
+                    <p>✓ Professional setup included • ✓ 30-day satisfaction guarantee • ✓ ROI within 30 days</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
+                    Hear MANUS Voice Pro in Action
+                </h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    Listen to a real conversation. Notice how natural, professional, and human-like our AI sounds.
+                    Your customers will never know they're talking to AI.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="p-8 shadow-2xl border-2 border-blue-100 rounded-lg bg-white">
+                    <div class="text-center mb-8">
+                        <button 
+                            id="playButton"
+                            onclick="playDemo()"
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors"
+                        >
+                            ▶️ Play Live Demo
+                        </button>
+                        <p class="text-sm text-gray-500 mt-2">
+                            🎧 Turn up your volume for the best experience
+                        </p>
+                    </div>
+
+                    <div id="conversation" class="space-y-4 min-h-[400px]">
+                        <!-- Conversation messages will be inserted here -->
+                    </div>
+
+                    <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <div class="flex items-start">
+                            <span class="text-yellow-500 text-xl mr-3">⭐</span>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">What You Just Heard:</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Natural conversation flow - sounds 100% human</li>
+                                    <li>• Instant patient recognition and personalization</li>
+                                    <li>• Real-time calendar integration and booking</li>
+                                    <li>• Professional, friendly tone that builds trust</li>
+                                    <li>• Complete appointment confirmation process</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <p class="text-lg text-gray-600 mb-4">
+                        <strong>This is exactly what your customers will experience.</strong>
+                    </p>
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-4 rounded-lg transition-colors">
+                        Get Your Custom Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
+                    Complete AI Communication Solution
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Beyond just answering calls - we text missed prospects, handle after-hours inquiries, 
+                    and provide dedicated success management. Your complete customer communication team.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-blue-600 text-3xl mb-4">📞</div>
+                    <h3 class="text-xl font-bold mb-3">24/7 Instant Answer</h3>
+                    <p class="text-gray-600">Answers every call on the first ring, day or night. Never miss another opportunity.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-green-600 text-3xl mb-4">💬</div>
+                    <h3 class="text-xl font-bold mb-3">Missed Call Text Back</h3>
+                    <p class="text-gray-600">Instantly texts prospects who hang up or miss calls. Never lose a lead again, even when they don't wait.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-purple-600 text-3xl mb-4">📅</div>
+                    <h3 class="text-xl font-bold mb-3">Intelligent Appointment Booking</h3>
+                    <p class="text-gray-600">Schedules appointments based on your real-time availability with seamless calendar integration.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-orange-600 text-3xl mb-4">🌙</div>
+                    <h3 class="text-xl font-bold mb-3">After Hours Answering Service</h3>
+                    <p class="text-gray-600">Complete 24/7 coverage when your business is closed. Capture leads and handle emergencies around the clock.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-red-600 text-3xl mb-4">📈</div>
+                    <h3 class="text-xl font-bold mb-3">Sales & Lead Capture</h3>
+                    <p class="text-gray-600">Asks qualifying questions and captures lead information to maximize conversion rates.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-indigo-600 text-3xl mb-4">👥</div>
+                    <h3 class="text-xl font-bold mb-3">Dedicated Customer Success Manager</h3>
+                    <p class="text-gray-600">Personal CSM ensures optimal performance, provides training, and maximizes your ROI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
+                    Enterprise-Grade AI Solutions
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Professional setup and dedicated support included. ROI typically achieved within 30 days.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Professional Plan -->
+                <div class="bg-white border-2 border-gray-200 rounded-lg p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Professional</h3>
+                    <div class="mb-4">
+                        <span class="text-4xl font-bold">$299</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <div class="text-sm text-gray-600 mb-6">Setup Fee: $199</div>
+                    <p class="text-gray-600 mb-6">Perfect for growing businesses</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 24/7 professional call answering</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Missed call text back system</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Intelligent appointment booking</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 1,000 minutes included</li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Schedule Consultation
+                    </button>
+                </div>
+
+                <!-- Enterprise Plan (Most Popular) -->
+                <div class="bg-white border-2 border-blue-500 rounded-lg p-8 shadow-lg relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Enterprise</h3>
+                    <div class="mb-4">
+                        <span class="text-4xl font-bold">$499</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <div class="text-sm text-gray-600 mb-6">Setup Fee: $399</div>
+                    <p class="text-gray-600 mb-6">Most popular for established businesses</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Everything in Professional</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> After hours answering service</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Custom voice cloning</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 2,500 minutes included</li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Schedule Consultation
+                    </button>
+                </div>
+
+                <!-- Enterprise Plus Plan -->
+                <div class="bg-white border-2 border-gray-200 rounded-lg p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Enterprise Plus</h3>
+                    <div class="mb-4">
+                        <span class="text-4xl font-bold">$799</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <div class="text-sm text-gray-600 mb-6">Setup Fee: $599</div>
+                    <p class="text-gray-600 mb-6">For high-volume enterprises</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Everything in Enterprise</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Dedicated Customer Success Manager</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> White-label solution</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 5,000 minutes included</li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Schedule Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                Ready to Transform Your Business?
+            </h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                Join thousands of businesses already using MANUS Voice Pro to capture every lead, 
+                delight every caller, and grow their revenue 24/7.
+            </p>
+            <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-4 text-lg rounded-lg transition-colors">
+                Schedule Your Consultation Today
+            </button>
+            <p class="text-sm mt-4 text-blue-200">
+                Professional setup included • 30-day satisfaction guarantee • Average ROI: 300% within 6 months
+            </p>
+        </div>
+    </section>
+
+    <script>
+        const demoConversation = [
+            {
+                speaker: "caller",
+                text: "Hi, I need to schedule a dental cleaning.",
+                duration: 2000,
+                audio: "Hi, I need to schedule a dental cleaning."
+            },
+            {
+                speaker: "ai",
+                text: "Hello! I'd be happy to help you schedule a dental cleaning. May I have your name please?",
+                duration: 3000,
+                audio: "Hello! I'd be happy to help you schedule a dental cleaning. May I have your name please?"
+            },
+            {
+                speaker: "caller", 
+                text: "Yes, it's Sarah Johnson.",
+                duration: 1500,
+                audio: "Yes, it's Sarah Johnson."
+            },
+            {
+                speaker: "ai",
+                text: "Thank you Sarah. I see you're a returning patient. What day works best for you this week?",
+                duration: 3500,
+                audio: "Thank you Sarah. I see you're a returning patient. What day works best for you this week?"
+            },
+            {
+                speaker: "caller",
+                text: "How about Thursday afternoon?",
+                duration: 1800,
+                audio: "How about Thursday afternoon?"
+            },
+            {
+                speaker: "ai",
+                text: "Perfect! I have Thursday at 2:30 PM available with Dr. Smith. Would that work for you?",
+                duration: 3200,
+                audio: "Perfect! I have Thursday at 2:30 PM available with Dr. Smith. Would that work for you?"
+            },
+            {
+                speaker: "caller",
+                text: "That's perfect, thank you!",
+                duration: 1500,
+                audio: "That's perfect, thank you!"
+            },
+            {
+                speaker: "ai",
+                text: "Wonderful! I've booked your cleaning for Thursday at 2:30 PM. You'll receive a confirmation text shortly. Is there anything else I can help you with today?",
+                duration: 4000,
+                audio: "Wonderful! I've booked your cleaning for Thursday at 2:30 PM. You'll receive a confirmation text shortly. Is there anything else I can help you with today?"
+            }
+        ];
+
+        let isPlaying = false;
+        let currentStep = 0;
+        let currentAudio = null;
+
+        // Function to speak text using Web Speech API
+        function speakText(text, voice = 'female') {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                
+                // Get available voices
+                const voices = speechSynthesis.getVoices();
+                
+                // Select voice based on speaker
+                if (voice === 'female') {
+                    // Try to find a female voice
+                    const femaleVoice = voices.find(v => 
+                        v.name.toLowerCase().includes('female') || 
+                        v.name.toLowerCase().includes('zira') ||
+                        v.name.toLowerCase().includes('susan') ||
+                        v.name.toLowerCase().includes('samantha')
+                    ) || voices.find(v => v.gender === 'female') || voices[0];
+                    utterance.voice = femaleVoice;
+                } else {
+                    // Try to find a male voice for customer
+                    const maleVoice = voices.find(v => 
+                        v.name.toLowerCase().includes('male') || 
+                        v.name.toLowerCase().includes('david') ||
+                        v.name.toLowerCase().includes('mark')
+                    ) || voices.find(v => v.gender === 'male') || voices[1] || voices[0];
+                    utterance.voice = maleVoice;
+                }
+                
+                utterance.rate = 0.9;
+                utterance.pitch = voice === 'female' ? 1.1 : 0.9;
+                utterance.volume = 0.8;
+                
+                return new Promise((resolve) => {
+                    utterance.onend = resolve;
+                    utterance.onerror = resolve;
+                    speechSynthesis.speak(utterance);
+                });
+            }
+            return Promise.resolve();
+        }
+
+        async function playDemo() {
+            const button = document.getElementById('playButton');
+            const conversation = document.getElementById('conversation');
+            
+            if (isPlaying) {
+                isPlaying = false;
+                currentStep = 0;
+                button.innerHTML = '▶️ Play Live Demo';
+                button.className = 'bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors';
+                conversation.innerHTML = '';
+                
+                // Stop any current speech
+                if ('speechSynthesis' in window) {
+                    speechSynthesis.cancel();
+                }
+                return;
+            }
+
+            isPlaying = true;
+            button.innerHTML = '⏸️ Stop Demo';
+            button.className = 'bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors';
+            conversation.innerHTML = '';
+            currentStep = 0;
+            
+            // Load voices if not already loaded
+            if ('speechSynthesis' in window && speechSynthesis.getVoices().length === 0) {
+                await new Promise(resolve => {
+                    speechSynthesis.onvoiceschanged = resolve;
+                });
+            }
+            
+            for (let stepIndex = 0; stepIndex < demoConversation.length && isPlaying; stepIndex++) {
+                const message = demoConversation[stepIndex];
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `flex ${message.speaker === 'caller' ? 'justify-end' : 'justify-start'} animate-fade-in`;
+                
+                messageDiv.innerHTML = `
+                    <div class="max-w-xs lg:max-w-md px-4 py-3 rounded-lg ${
+                        message.speaker === 'caller' 
+                            ? 'bg-blue-600 text-white' 
+                            : 'bg-gray-100 text-gray-900 border-2 border-green-200 speaking'
+                    }" id="message-${stepIndex}">
+                        <div class="flex items-center mb-1">
+                            <span class="text-xs font-semibold">
+                                ${message.speaker === 'caller' ? '📞 Customer' : '🔊 MANUS Voice Pro'}
+                            </span>
+                        </div>
+                        <p class="text-sm">${message.text}</p>
+                    </div>
+                `;
+                
+                conversation.appendChild(messageDiv);
+                
+                // Add speaking animation and play audio
+                const messageElement = document.getElementById(`message-${stepIndex}`);
+                if (message.speaker === 'ai') {
+                    messageElement.classList.add('speaking');
+                }
+                
+                // Play audio using Web Speech API
+                if (isPlaying) {
+                    const voiceType = message.speaker === 'ai' ? 'female' : 'male';
+                    await speakText(message.audio, voiceType);
+                }
+                
+                // Remove speaking animation
+                if (message.speaker === 'ai') {
+                    messageElement.classList.remove('speaking');
+                }
+                
+                // Wait before next message (reduced since audio provides timing)
+                if (isPlaying && stepIndex < demoConversation.length - 1) {
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                }
+            }
+            
+            if (isPlaying) {
+                // Demo finished
+                const successDiv = document.createElement('div');
+                successDiv.className = 'text-center py-8';
+                successDiv.innerHTML = `
+                    <div class="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                        ✅ Appointment Successfully Booked in 30 Seconds!
+                    </div>
+                `;
+                conversation.appendChild(successDiv);
+                
+                isPlaying = false;
+                button.innerHTML = '▶️ Play Live Demo';
+                button.className = 'bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors';
+            }
+        }
+
+        // Load voices when page loads
+        if ('speechSynthesis' in window) {
+            speechSynthesis.getVoices();
+            speechSynthesis.onvoiceschanged = () => {
+                speechSynthesis.getVoices();
+            };
+        }
+    </script>
+</body>
+</html>
